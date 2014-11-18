@@ -62,6 +62,16 @@
                                         <helpUrl />
                                         <supportsPopUps>False</supportsPopUps>
                                     </moduleControl>
+                  <moduleControl>
+                    <controlKey>TapatalkSettings</controlKey>
+                    <controlSrc>DesktopModules/ActiveForums/Tapatalk/Settings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Tapatalk Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <supportsPopUps>False</supportsPopUps>
+                  </moduleControl>
                                 </moduleControls>
                             </moduleDefinition>
                          
@@ -279,10 +289,10 @@
                         <name>05.02.02.SqlDataProvider</name>
                         <version>05.02.02</version>
                       </script>
-                        <script type="UnInstall">                            
-                            <name>Uninstall.SqlDataProvider</name>
-                            <version>06.00.02</version>
-                        </script>
+            <!--<script type="UnInstall">
+              <name>Uninstall.SqlDataProvider</name>
+              <version>06.00.02</version>
+            </script>-->
                     </scripts>
                 </component>
                 <component type="ResourceFile">
@@ -299,7 +309,24 @@
                         <configFile>web.config</configFile>
                         <install>
                             <configuration>
-                                <nodes />
+                <nodes>
+                  <node path="/configuration/system.webServer/modules" action="update" key="path" collision="overwrite">
+                    <add name="TapatalkSmartBanner" type="ActiveForumsTapatalk.SmartBanner.SmartBanner, DotNetNuke.Modules.ActiveForums" />
+                  </node>
+                  <node path="/configuration/system.web/httpModules" action="update" key="path" collision="overwrite">
+                    <add name="TapatalkSmartBanner" type="ActiveForumsTapatalk.SmartBanner.SmartBanner, DotNetNuke.Modules.ActiveForums" />
+                  </node>
+                  <node path="/configuration/system.webServer/handlers" action="update" key="path" collision="overwrite">
+                    <add name="TapatalkAPIHandler" preCondition="integratedMode" verb="*" path="mobiquo/mobiquo.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                    <add name="TapatalkAPIHandlerJson" preCondition="integratedMode" verb="*" path="mobiquo/tapatalk.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                    <add name="TapatalkAPIHandlerUpload" preCondition="integratedMode" verb="*" path="mobiquo/upload.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                  </node>
+                  <node path="/configuration/system.web/httpHandlers" action="update" key="path" collision="overwrite">
+                    <add name="TapatalkAPIHandler" preCondition="integratedMode" verb="*" path="mobiquo/mobiquo.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                    <add name="TapatalkAPIHandlerJson" preCondition="integratedMode" verb="*" path="mobiquo/tapatalk.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                    <add name="TapatalkAPIHandlerUpload" preCondition="integratedMode" verb="*" path="mobiquo/upload.ashx" type="ActiveForumsTapatalk.Implementation.ActiveForumsTapatalk, DotNetNuke.Modules.ActiveForums" />
+                  </node>
+                </nodes>
                             </configuration>
                         </install>
                         <uninstall>
@@ -307,6 +334,14 @@
                                 <nodes>
                                     <node path="/configuration/system.webServer/modules/add[@name = 'ForumsReWriter']" action="remove" />
                                     <node path="/configuration/system.web/httpModules/add[@name = 'ForumsReWriter']" action="remove" />
+                  <node path="/configuration/system.webServer/modules/add[@name = 'TapatalkSmartBanner']" action="remove" />
+                  <node path="/configuration/system.web/httpModules/add[@name = 'TapatalkSmartBanner']" action="remove" />
+                  <node path="/configuration/system.webServer/handlers/add[@name = 'TapatalkAPIHandler']" action="remove" />
+                  <node path="/configuration/system.web/httpHandlers/add[@name = 'TapatalkAPIHandler']" action="remove" />
+                  <node path="/configuration/system.webServer/handlers/add[@name = 'TapatalkAPIHandlerJson']" action="remove" />
+                  <node path="/configuration/system.web/httpHandlers/add[@name = 'TapatalkAPIHandlerJson']" action="remove" />
+                  <node path="/configuration/system.webServer/handlers/add[@name = 'TapatalkAPIHandlerUpload']" action="remove" />
+                  <node path="/configuration/system.web/httpHandlers/add[@name = 'TapatalkAPIHandlerUpload']" action="remove" />
                                 </nodes>
                             </configuration>
                         </uninstall>

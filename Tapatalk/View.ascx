@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="DotNetNuke.Modules.ActiveForums.Tapatalk.View" %>
+<div runat="server" id="tapatalkConfigWarning" class="tapatalkConfigWarning" EnableViewState="False" Visible="false"></div>

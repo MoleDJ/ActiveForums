@@ -33,10 +33,14 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\..\bin\</OutputPath>
@@ -128,6 +132,10 @@
       <HintPath>..\..\..\References\DNN 7.0.0\DotNetNuke.WebUtility.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\References\DNN 7.0.0\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -141,6 +149,10 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\References\DNN 7.0.0\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -185,6 +197,10 @@
       <Name>System.XML</Name>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Tapatalk-BasePlugin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Tapatalk\Dependencies\Tapatalk-BasePlugin.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Web.UI, Version=2012.3.1205.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\References\DNN 7.0.0\Telerik.Web.UI.dll</HintPath>
@@ -340,6 +356,7 @@
     <Content Include="ForumSettings.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <None Include="packages.config" />
     <None Include="sql\04.01.17.SqlDataProvider" />
     <None Include="sql\04.01.18.SqlDataProvider" />
     <None Include="sql\04.02.06.SqlDataProvider" />
@@ -353,6 +370,12 @@
     <Content Include="scripts\usereditor.js" />
     <Content Include="scripts\splitmanager.js" />
     <Content Include="sql\CoreForumsToActiveForums.sql" />
+    <Content Include="Tapatalk\Settings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Tapatalk\View.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="themes\_default\emoticons\angry.gif" />
     <Content Include="themes\_default\emoticons\arrow.gif" />
     <Content Include="themes\_default\emoticons\atomic.gif" />
@@ -989,6 +1012,44 @@
     <Compile Include="ForumSettings.ascx.cs">
       <DependentUpon>ForumSettings.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tapatalk\Classes\ActiveForumsTapatalkModuleBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tapatalk\Classes\ActiveForumsTapatalkModuleSettings.cs" />
+    <Compile Include="Tapatalk\Classes\ActiveForumsTapatalkModuleSettingsBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tapatalk\Classes\Helpers.cs" />
+    <Compile Include="Tapatalk\Implementation\Account.cs" />
+    <Compile Include="Tapatalk\Implementation\Attachment.cs" />
+    <Compile Include="Tapatalk\Implementation\Common.cs" />
+    <Compile Include="Tapatalk\Implementation\Forum.cs" />
+    <Compile Include="Tapatalk\Implementation\Moderation.cs" />
+    <Compile Include="Tapatalk\Implementation\Post.cs" />
+    <Compile Include="Tapatalk\Implementation\PrivateConversation.cs" />
+    <Compile Include="Tapatalk\Implementation\PrivateMessage.cs" />
+    <Compile Include="Tapatalk\Implementation\Search.cs" />
+    <Compile Include="Tapatalk\Implementation\Social.cs" />
+    <Compile Include="Tapatalk\Implementation\Subscription.cs" />
+    <Compile Include="Tapatalk\Implementation\TapatalkModuleContext.cs" />
+    <Compile Include="Tapatalk\Implementation\Topic.cs" />
+    <Compile Include="Tapatalk\Implementation\User.cs" />
+    <Compile Include="Tapatalk\Push\Push.cs" />
+    <Compile Include="Tapatalk\Settings.ascx.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tapatalk\Settings.ascx.designer.cs">
+      <DependentUpon>Settings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tapatalk\SmartBanner\SmartBanner.cs" />
+    <Compile Include="Tapatalk\View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tapatalk\View.ascx.designer.cs">
+      <DependentUpon>View.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="WhatsNew.ascx.designer.cs">
       <DependentUpon>WhatsNew.ascx</DependentUpon>
